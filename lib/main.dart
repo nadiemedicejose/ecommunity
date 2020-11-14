@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Inicio'),
+      home: PrimeraPantalla(),
     );
   }
 }
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       // Esta llamada al método setState indica al framework que algo ha cambiado. Permite volver a correr el método build para que la pantalla pueda mostrar los valores actualizados.
-      
+
       // Si cambias _counter sin haber llamado al método setState(), el build no será llamado de nuevo y puede parecer que nada está sucediendo.
       _counter++;
     });
@@ -53,14 +53,25 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        elevation: 4.0,
+        leading: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.menu),
+        ),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications),
+          )
+        ],
       ),
       body: Center(
         // Center es un widget de diseño. Toma un child individual y lo ubica en el centro de su contenedor (parent).
         child: Column(
           // Column es un widget de diseño. Toma una lista de children y los organiza verticalmente. Por default, ajusta hijos horizontalmente e intenta ser tan grande como su contenedor.
-          
+
           // Invoca "debug painting" (presiona "p" en la consola, escoge la acción "Toggle Debug Paint" desde Flutter Inspector en Android Studio, o el comando "Toggle Debug Paint" en VS Code) para ver el wireframe de cada widget.
-          
+
           // Column posee propiedades para ajustar su tamaño y cómo posiciona a sus children. Por ejemplo, aquí se usa mainAxisAlignment para centrar children verticalmente; el eje principal es vertical.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -79,6 +90,44 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // La coma hace que el autoformato se más eficiente.
+    );
+  }
+}
+
+class PrimeraPantalla extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Primera Pantalla"),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text("Abre la segunda pantalla"),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (contexto) => SegundaPantalla(),
+            ));
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SegundaPantalla extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Segunda Pantalla")),
+      body: Center(
+        child: RaisedButton(
+          child: Text("Volver"),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
     );
   }
 }
