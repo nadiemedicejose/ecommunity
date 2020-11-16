@@ -3,6 +3,7 @@ import 'package:ecommunity/src/view/principal.dart';
 import 'package:ecommunity/src/view/otrapantalla.dart';
 import 'package:ecommunity/src/widgets/botones.dart';
 import 'package:ecommunity/src/view/registro.dart';
+import 'package:ecommunity/src/view/perfil.dart';
 
 class ECOmmunity extends StatelessWidget {
   // Este widget es la raíz de la aplicación.
