@@ -1,4 +1,4 @@
-name: ecommunity
+name: ECOmmunity
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   form_field_validator: ^1.0.1
+  flutter_layout_grid: ^0.10.2
 
 
   # The following adds the Cupertino Icons font to your application.

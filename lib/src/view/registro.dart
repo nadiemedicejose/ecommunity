@@ -37,31 +37,35 @@ class _RegistroState extends State<Registro> {
           },
         ),
         title: Text("Registro"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            tooltip: 'Opciones',
+            onPressed: () {},
+          ),
+        ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(25.0),
-        child: Form(
-          autovalidate: true,
-          key: formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 20.0),
-                child: Image.network(
-                    'https://i.imgur.com/6LHJMKO.png',
-                    width: 200,
-                    height: 200,
+          padding: EdgeInsets.all(25.0),
+          child: Form(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            key: formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: LogoImage(
+                    logoUrl: 'https://i.imgur.com/6LHJMKO.png',
                   ),
                 ),
-              TextFormField(
+                TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Nombre",
                   ),
                 ),
-              Padding(
+                Padding(
                   padding: EdgeInsets.only(
                     top: 20.0,
                   ),
@@ -76,7 +80,7 @@ class _RegistroState extends State<Registro> {
                     ]),
                   ),
                 ),
-              Padding(
+                Padding(
                   padding: EdgeInsets.only(
                     top: 20.0,
                   ),
@@ -87,7 +91,7 @@ class _RegistroState extends State<Registro> {
                     ),
                   ),
                 ),
-              Padding(
+                Padding(
                   padding: EdgeInsets.only(
                     top: 20.0,
                   ),
@@ -98,7 +102,7 @@ class _RegistroState extends State<Registro> {
                     ),
                   ),
                 ),
-              Padding(
+                Padding(
                   padding: EdgeInsets.only(
                     top: 20.0,
                   ),
@@ -110,7 +114,7 @@ class _RegistroState extends State<Registro> {
                     validator: validarContrasena,
                   ),
                 ),
-              Padding(
+                Padding(
                   padding: EdgeInsets.only(
                     top: 20.0,
                   ),
@@ -121,25 +125,41 @@ class _RegistroState extends State<Registro> {
                     ),
                   ),
                 ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
-                ),
-                child: RaisedButton(
-                  child: Padding(
-                    padding: EdgeInsets.all(20.0),
-                    child: Text("Registrarme"),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
                   ),
-                  onPressed: validate,
-                  shape: StadiumBorder(),
-                  color: Colors.green,
-                  textColor: Colors.white,
-                ),
-              )
-            ],
-          ),
-        )
-      ),
+                  child: RaisedButton(
+                    child: Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: Text("Registrarme"),
+                    ),
+                    onPressed: validate,
+                    shape: StadiumBorder(),
+                    color: Colors.green,
+                    textColor: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          )),
+    );
+  }
+}
+
+class LogoImage extends StatelessWidget {
+  final String logoUrl;
+  const LogoImage({
+    Key key,
+    this.logoUrl,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.network(
+      logoUrl,
+      width: 200,
+      height: 200,
     );
   }
 }

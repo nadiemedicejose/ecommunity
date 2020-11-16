@@ -1,5 +1,6 @@
+import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommunity/src/view/iniciar.dart';
+import 'view/reporte.dart';
 
 class ECOmmunity extends StatelessWidget {
   // Este widget es la raíz de la aplicación.
