@@ -1,8 +1,6 @@
+import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommunity/src/view/principal.dart';
-import 'package:ecommunity/src/view/otrapantalla.dart';
-import 'package:ecommunity/src/widgets/botones.dart';
-import 'package:ecommunity/src/view/registro.dart';
+import 'view/reporte.dart';
 
 class ECOmmunity extends StatelessWidget {
   // Este widget es la raíz de la aplicación.
@@ -16,7 +14,7 @@ class ECOmmunity extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Registro(),
+      home: IniciarSesion(),
     );
   }
 } 
