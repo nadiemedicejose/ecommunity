@@ -35,105 +35,16 @@ class _RegistroState extends State<Registro> {
         title: Text("Registro"),
       ),
       body: SingleChildScrollView(
-          padding: EdgeInsets.all(25.0),
-          child: Form(
-            autovalidate: true,
-            key: formkey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Nombre",
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Email",
-                    ),
-                    validator: MultiValidator([
-                      RequiredValidator(errorText: "Requerido"),
-                      EmailValidator(errorText: "Correo no válido")
-                    ]),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Teléfono",
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Residencia",
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Contraseña",
-                    ),
-                    validator: validarContrasena,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Confirmar contraseña",
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 20.0,
-                  ),
-                  child: RaisedButton(
-                    child: Text("Registrarme"),
-                    onPressed: validate,
-                    shape: StadiumBorder(),
-                    color: Colors.green,
-                    textColor: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          )),
-      body: Padding(
         padding: EdgeInsets.all(25.0),
         child: Form(
+          autovalidate: true,
+          key: formkey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    
-                  ),
+                  border: OutlineInputBorder(),
                   labelText: "Nombre",
                 ),
               ),
@@ -143,11 +54,13 @@ class _RegistroState extends State<Registro> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      
-                    ),
+                    border: OutlineInputBorder(),
                     labelText: "Email",
                   ),
+                  validator: MultiValidator([
+                    RequiredValidator(errorText: "Requerido"),
+                    EmailValidator(errorText: "Correo no válido")
+                  ]),
                 ),
               ),
               Padding(
@@ -156,9 +69,7 @@ class _RegistroState extends State<Registro> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      
-                    ),
+                    border: OutlineInputBorder(),
                     labelText: "Teléfono",
                   ),
                 ),
@@ -169,9 +80,7 @@ class _RegistroState extends State<Registro> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      
-                    ),
+                    border: OutlineInputBorder(),
                     labelText: "Residencia",
                   ),
                 ),
@@ -182,11 +91,10 @@ class _RegistroState extends State<Registro> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      
-                    ),
+                    border: OutlineInputBorder(),
                     labelText: "Contraseña",
                   ),
+                  validator: validarContrasena,
                 ),
               ),
               Padding(
@@ -195,9 +103,7 @@ class _RegistroState extends State<Registro> {
                 ),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      
-                    ),
+                    border: OutlineInputBorder(),
                     labelText: "Confirmar contraseña",
                   ),
                 ),
@@ -206,14 +112,17 @@ class _RegistroState extends State<Registro> {
                 padding: EdgeInsets.only(
                   top: 20.0,
                 ),
-                child: ElevatedButton(
+                child: RaisedButton(
                   child: Text("Registrarme"),
-                  onPressed: () {},
+                  onPressed: validate,
+                  shape: StadiumBorder(),
+                  color: Colors.green,
+                  textColor: Colors.white,
                 ),
               )
             ],
           ),
-        )
+        ),
       ),
     );
   }
