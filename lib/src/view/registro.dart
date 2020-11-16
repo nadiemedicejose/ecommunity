@@ -36,92 +36,93 @@ class _RegistroState extends State<Registro> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(25.0),
-        child: Form(
-          autovalidate: true,
-          key: formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Nombre",
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
-                ),
-                child: TextFormField(
+          child: Form(
+            autovalidate: true,
+            key: formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Email",
-                  ),
-                  validator: MultiValidator([
-                    RequiredValidator(errorText: "Requerido"),
-                    EmailValidator(errorText: "Correo no válido")
-                  ]),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Teléfono",
+                    labelText: "Nombre",
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Residencia",
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Email",
+                    ),
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "Requerido"),
+                      EmailValidator(errorText: "Correo no válido")
+                    ]),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Contraseña",
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
                   ),
-                  validator: validarContrasena,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
-                ),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: "Confirmar contraseña",
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Teléfono",
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 20.0,
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Residencia",
+                    ),
+                  ),
                 ),
-                child: RaisedButton(
-                  child: Text("Registrarme"),
-                  onPressed: validate,
-                  shape: StadiumBorder(),
-                  color: Colors.green,
-                  textColor: Colors.white,
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Contraseña",
+                    ),
+                    validator: validarContrasena,
+                  ),
                 ),
-              )
-            ],
-          ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Confirmar contraseña",
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: 20.0,
+                  ),
+                  child: RaisedButton(
+                    child: Text("Registrarme"),
+                    onPressed: validate,
+                    shape: StadiumBorder(),
+                    color: Colors.green,
+                    textColor: Colors.white,
+                  ),
+                )
+              ],
+            ),
+          )),
         ),
       ),
     );
