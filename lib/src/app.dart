@@ -11,10 +11,10 @@ class ECOmmunity extends StatelessWidget {
       title: 'ECOmmunity',
       theme: ThemeData(
         // Define el tema de la aplicación
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: PrimeraPantalla(),
+      home: Botones(),
     );
   }
-}
+} 
