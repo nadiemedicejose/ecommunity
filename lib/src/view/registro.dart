@@ -118,12 +118,11 @@ class _RegistroState extends State<Registro> {
                     shape: StadiumBorder(),
                     color: Colors.green,
                     textColor: Colors.white,
-                  ),
-                )
-              ],
-            ),
-          )),
-        ),
+                ),
+              )
+            ],
+          ),
+        )
       ),
     );
   }
