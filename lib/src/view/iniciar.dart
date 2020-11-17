@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'inicio.dart';
-import 'registro.dart';
+import 'perfil.dart';
 
 class IniciarSesion extends StatefulWidget {
   @override
@@ -159,7 +159,7 @@ class RegistrarmeButton extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => Registro(),
+            builder: (contexto) => IniciarSesion(),
           ));
         },
       ),
