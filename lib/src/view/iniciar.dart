@@ -2,6 +2,7 @@ import 'package:ECOmmunity/src/view/reporte.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'inicio.dart';
+import 'perfil.dart';
 
 class IniciarSesion extends StatefulWidget {
   @override
