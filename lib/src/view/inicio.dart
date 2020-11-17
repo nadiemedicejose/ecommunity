@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ECOmmunity/src/view/perfil.dart';
-
-Color _color = Colors.green;
+import 'perfil.dart';
 
 class Inicio extends StatefulWidget {
   @override
@@ -51,6 +49,14 @@ class _InicioState extends State<Inicio> {
             ReportesRecientes(),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (contexto) => Reporte(),
+          ));
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -221,6 +227,7 @@ class Reporte extends StatelessWidget {
           children: <Widget>[
             Container(
               width: 290,
+              alignment: FractionalOffset.centerLeft,
               child: Column(
                 children: [
                   Padding(
@@ -253,7 +260,7 @@ class Reporte extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

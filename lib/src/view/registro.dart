@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:ECOmmunity/src/view/perfil.dart';
+import 'perfil.dart';
 
 class Registro extends StatefulWidget {
   @override
