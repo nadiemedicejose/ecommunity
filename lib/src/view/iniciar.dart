@@ -1,7 +1,7 @@
-import 'package:ECOmmunity/src/view/reporte.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'inicio.dart';
+import 'registro.dart';
 
 class IniciarSesion extends StatefulWidget {
   @override
@@ -48,6 +48,7 @@ class _IniciarSesionState extends State<IniciarSesion> {
               EmailTextField(),
               ContrasenaTextField(),
               IniciarSesionButton(),
+              RegistrarmeButton(),
             ],
           ),
         ),
@@ -139,6 +140,28 @@ class IniciarSesionButton extends StatelessWidget {
         shape: StadiumBorder(),
         color: Colors.green,
         textColor: Colors.white,
+      ),
+    );
+  }
+}
+
+class RegistrarmeButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 20.0,
+      ),
+      child: TextButton(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Text("Crear una cuenta"),
+        ),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (contexto) => Registro(),
+          ));
+        },
       ),
     );
   }

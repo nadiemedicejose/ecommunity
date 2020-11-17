@@ -1,4 +1,5 @@
 import 'package:ECOmmunity/src/view/detalleReporte.dart';
+import 'package:ECOmmunity/src/widgets/botones.dart';
 import 'package:flutter/material.dart';
 import 'view/iniciar.dart';
 
