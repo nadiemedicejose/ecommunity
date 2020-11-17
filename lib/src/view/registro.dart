@@ -1,3 +1,4 @@
+import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'perfil.dart';
@@ -5,6 +6,14 @@ import 'package:ECOmmunity/src/model/funcionesBD.dart';
 import 'package:ECOmmunity/src/model/modeloBD.dart';
 
 FuncionesBD objBD = FuncionesBD();
+
+// Controladores para obtener valor de TextFormFields
+final nombreController = TextEditingController();
+final emailController = TextEditingController();
+final telefonoController = TextEditingController();
+final residenciaController = TextEditingController();
+final contrasenaController = TextEditingController();
+final confContrasenaController = TextEditingController();
 
 class Registro extends StatefulWidget {
   @override
@@ -100,10 +109,15 @@ class LogoImage extends StatelessWidget {
 }
 
 class NombreTextField extends StatelessWidget {
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    nombreController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: contNombre,
+      controller: nombreController,
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: "Nombre",
@@ -113,6 +127,11 @@ class NombreTextField extends StatelessWidget {
 }
 
 class EmailTextField extends StatelessWidget {
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    emailController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -120,6 +139,7 @@ class EmailTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: emailController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Email",
@@ -134,6 +154,11 @@ class EmailTextField extends StatelessWidget {
 }
 
 class TelefonoTextField extends StatelessWidget {
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    telefonoController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -141,6 +166,7 @@ class TelefonoTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: telefonoController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Teléfono",
@@ -151,6 +177,11 @@ class TelefonoTextField extends StatelessWidget {
 }
 
 class ResidenciaTextField extends StatelessWidget {
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    residenciaController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -158,6 +189,7 @@ class ResidenciaTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: residenciaController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Residencia",
@@ -168,6 +200,11 @@ class ResidenciaTextField extends StatelessWidget {
 }
 
 class ContrasenaTextField extends StatelessWidget {
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    contrasenaController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -175,6 +212,7 @@ class ContrasenaTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: contrasenaController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Contraseña",
@@ -185,6 +223,11 @@ class ContrasenaTextField extends StatelessWidget {
 }
 
 class ConfirmarContrasenaTextField extends StatelessWidget {
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    confContrasenaController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -192,6 +235,7 @@ class ConfirmarContrasenaTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: confContrasenaController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Confirmar contraseña",
@@ -228,7 +272,16 @@ class RegistrarmeButton extends StatelessWidget {
           await objBD.addItem(datosUs);
           var usuarios = await objBD.listaUsuario();
           print(usuarios[usuarios.length-1].nombre); //Title 1
-          print(contNombre.text);
+          
+          print(nombreController.text);
+          print(emailController.text);
+          print(telefonoController.text);
+          print(residenciaController.text);
+          print(contrasenaController.text);
+          print(confContrasenaController.text);
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (contexto) => IniciarSesion(),
+          ));
         },
         shape: StadiumBorder(),
         color: Colors.green,
