@@ -1,7 +1,7 @@
 import 'package:ECOmmunity/src/view/reporte.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'perfil.dart';
+import 'inicio.dart';
 
 class IniciarSesion extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _IniciarSesionState extends State<IniciarSesion> {
   void validate() {
     if (formkey.currentState.validate()) {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (contexto) => Reporte(),
+        builder: (contexto) => Inicio(),
       ));
     } else {
       print("No validado");
@@ -133,7 +133,7 @@ class IniciarSesionButton extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => Reporte(),
+            builder: (contexto) => Inicio(),
           ));
         },
         shape: StadiumBorder(),

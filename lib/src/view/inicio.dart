@@ -1,3 +1,6 @@
+import 'package:ECOmmunity/src/view/detalleReporte.dart';
+import 'package:ECOmmunity/src/view/iniciar.dart';
+import 'package:ECOmmunity/src/view/reporte.dart';
 import 'package:flutter/material.dart';
 import 'perfil.dart';
 
@@ -53,10 +56,63 @@ class _InicioState extends State<Inicio> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => Reporte(),
+            builder: (context) => ReportePage(),
           ));
         },
         child: Icon(Icons.add),
+      ),
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              accountName: Text("Calabaza"),
+              accountEmail: Text("calabaza@miau.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: Text(
+                  "C",
+                  style: TextStyle(fontSize: 40.0),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text('Perfil'),
+              onTap: () {
+                // Update the state of the app
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (contexto) => Perfil(),
+                ));
+                // Then close the drawer
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.group),
+              title: Text('Mi Comunidad'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Cerrar Sesión'),
+              onTap: () {
+                // Update the state of the app
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (contexto) => IniciarSesion(),
+                ));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -220,57 +276,65 @@ class Reporte extends StatelessWidget {
     return Card(
       elevation: 4,
       color: color,
-      child: SizedBox(
-        width: 350,
-        height: 200,
-        child: Stack(
-          children: <Widget>[
-            Container(
-              width: 290,
-              alignment: FractionalOffset.centerLeft,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      top: 20,
-                      bottom: 10,
-                    ),
-                    child: Text(
-                      "Titulo",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+      child: InkWell(
+        splashColor: Colors.blue.withAlpha(30),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => DetalleReportePage(),
+          ));
+        },
+        child: SizedBox(
+          width: 350,
+          height: 200,
+          child: Stack(
+            children: <Widget>[
+              Container(
+                width: 290,
+                alignment: FractionalOffset.centerLeft,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                        top: 20,
+                        bottom: 10,
                       ),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      bottom: 20,
-                    ),
-                    child: Text(
-                      "Descripción " * 10,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
+                      child: Text(
+                        "Titulo",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
-                  ),
-                ],
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                        bottom: 20,
+                      ),
+                      child: Text(
+                        "Descripción " * 10,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: 150,
-              alignment: FractionalOffset.centerRight,
-              child: Image.network(
-                  'https://i.pinimg.com/564x/67/6f/ac/676fac5f97a5c76fb26b91e58addf57d.jpg'),
-            ),
-          ],
+              Container(
+                width: 150,
+                alignment: FractionalOffset.centerRight,
+                child: Image.network(
+                    'https://i.pinimg.com/564x/67/6f/ac/676fac5f97a5c76fb26b91e58addf57d.jpg'),
+              ),
+            ],
+          ),
         ),
       ),
     );
