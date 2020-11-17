@@ -113,6 +113,7 @@ class ContrasenaTextField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: "Contraseña",
         ),
+        validator: MinLengthValidator(6, errorText: "Contraseña inválida"),
       ),
     );
   }
