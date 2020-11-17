@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'perfil.dart';
 
-class ReportePage extends StatefulWidget {
+class DetalleReportePage extends StatefulWidget {
   @override
-  _ReportePageState createState() => _ReportePageState();
+  _DetalleReportePageState createState() => _DetalleReportePageState();
 }
 
-class _ReportePageState extends State<ReportePage> {
+class _DetalleReportePageState extends State<DetalleReportePage> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   void validate() {
@@ -29,7 +29,7 @@ class _ReportePageState extends State<ReportePage> {
             Navigator.of(context).pop();
           },
         ),
-        title: Text("Crear Reporte"),
+        title: Text("Detalle de Reporte"),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_vert),
@@ -50,7 +50,6 @@ class _ReportePageState extends State<ReportePage> {
               UbicacionTextField(),
               DenuncianteTextField(),
               DescripcionTextField(),
-              GuardarButton(),
             ],
           ),
         ),
@@ -141,29 +140,6 @@ class DescripcionTextField extends StatelessWidget {
           alignLabelWithHint: true,
         ),
         maxLines: 5,
-      ),
-    );
-  }
-}
-
-class GuardarButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 20.0,
-      ),
-      child: RaisedButton(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Text("Denunciar"),
-        ),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        shape: StadiumBorder(),
-        color: Colors.green,
-        textColor: Colors.white,
       ),
     );
   }

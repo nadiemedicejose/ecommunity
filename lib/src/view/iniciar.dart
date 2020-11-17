@@ -1,6 +1,7 @@
 import 'package:ECOmmunity/src/view/reporte.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'inicio.dart';
 import 'perfil.dart';
 
 class IniciarSesion extends StatefulWidget {
@@ -14,7 +15,7 @@ class _IniciarSesionState extends State<IniciarSesion> {
   void validate() {
     if (formkey.currentState.validate()) {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (contexto) => Reporte(),
+        builder: (contexto) => Inicio(),
       ));
     } else {
       print("No validado");
@@ -113,6 +114,7 @@ class ContrasenaTextField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: "Contraseña",
         ),
+        validator: MinLengthValidator(6, errorText: "Contraseña inválida"),
       ),
     );
   }
@@ -132,7 +134,7 @@ class IniciarSesionButton extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => Reporte(),
+            builder: (contexto) => Inicio(),
           ));
         },
         shape: StadiumBorder(),
