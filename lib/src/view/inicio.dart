@@ -1,7 +1,9 @@
 import 'package:ECOmmunity/src/view/detalleReporte.dart';
 import 'package:ECOmmunity/src/view/iniciar.dart';
-import 'package:ECOmmunity/src/view/reporte.dart';
+import 'package:ECOmmunity/src/view/Reportes/reporte.dart';
 import 'package:flutter/material.dart';
+import './widgets/ReporteTarjeta.dart';
+import './widgets/AvatarComunidad.dart';
 import 'perfil.dart';
 
 class Inicio extends StatefulWidget {
@@ -131,23 +133,23 @@ class Comunidades extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          ComunidadImagen(
+          AvatarComunidad(
             color: Colors.red,
           ),
           SizedBox(width: 5),
-          ComunidadImagen(
+          AvatarComunidad(
             color: Colors.blue,
           ),
           SizedBox(width: 5),
-          ComunidadImagen(
+          AvatarComunidad(
             color: Colors.green,
           ),
           SizedBox(width: 5),
-          ComunidadImagen(
+          AvatarComunidad(
             color: Colors.yellow,
           ),
           SizedBox(width: 5),
-          ComunidadImagen(
+          AvatarComunidad(
             color: Colors.orange,
           ),
         ],
@@ -170,15 +172,30 @@ class ReportesAtendidos extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          Reporte(
+          ReporteTarjeta(
+            titulo: "Kinder Nueva Creación",
+            descripcion:
+                "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+            foto:
+                'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
             color: atendidos,
           ),
           SizedBox(width: 5),
-          Reporte(
+          ReporteTarjeta(
+            titulo: "Kinder Nueva Creación",
+            descripcion:
+                "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+            foto:
+                'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
             color: atendidos,
           ),
           SizedBox(width: 5),
-          Reporte(
+          ReporteTarjeta(
+            titulo: "Kinder Nueva Creación",
+            descripcion:
+                "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+            foto:
+                'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
             color: atendidos,
           ),
           SizedBox(width: 5),
@@ -201,19 +218,39 @@ class ReportesRecientes extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Reporte(
+            ReporteTarjeta(
+              titulo: "Kinder Nueva Creación",
+              descripcion:
+                  "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+              foto:
+                  'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
               color: recientes,
             ),
             SizedBox(height: 5),
-            Reporte(
+            ReporteTarjeta(
+              titulo: "Kinder Nueva Creación",
+              descripcion:
+                  "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+              foto:
+                  'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
               color: recientes,
             ),
             SizedBox(height: 5),
-            Reporte(
+            ReporteTarjeta(
+              titulo: "Kinder Nueva Creación",
+              descripcion:
+                  "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+              foto:
+                  'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
               color: recientes,
             ),
             SizedBox(height: 5),
-            Reporte(
+            ReporteTarjeta(
+              titulo: "Kinder Nueva Creación",
+              descripcion:
+                  "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
+              foto:
+                  'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
               color: recientes,
             ),
             SizedBox(height: 5),
@@ -243,22 +280,6 @@ class Titulo extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-    );
-  }
-}
-
-class ComunidadImagen extends StatelessWidget {
-  final Color color;
-  const ComunidadImagen({
-    Key key,
-    this.color,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100.0,
-      color: color,
     );
   }
 }

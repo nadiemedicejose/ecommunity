@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import './perfil.dart';
+import '../perfil.dart';
 
 class ReportePage extends StatefulWidget {
   @override
@@ -24,20 +24,20 @@ class _ReportePageState extends State<ReportePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      leading: BackButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-      ),
-      title: Text("Crear Reporte"),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.more_vert),
-          tooltip: 'Opciones',
-          onPressed: () {},
+        leading: BackButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
         ),
-      ],
-    ),
+        title: Text("Crear Reporte"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            tooltip: 'Opciones',
+            onPressed: () {},
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(25.0),
         child: Form(
@@ -46,11 +46,21 @@ class _ReportePageState extends State<ReportePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TituloTextField(),
-              UbicacionTextField(),
-              DenuncianteTextField(),
-              DescripcionTextField(),
-              GuardarButton(),
+              TituloTextField(
+                estado: false,
+              ),
+              UbicacionTextField(
+                estado: false,
+              ),
+              DenuncianteTextField(
+                estado: false,
+              ),
+              DescripcionTextField(
+                estado: false,
+              ),
+              Boton(
+                texto: "Guardar campos",
+              ),
             ],
           ),
         ),
@@ -60,8 +70,10 @@ class _ReportePageState extends State<ReportePage> {
 }
 
 class TituloTextField extends StatelessWidget {
+  final bool estado;
   const TituloTextField({
     Key key,
+    this.estado,
   }) : super(key: key);
 
   @override
@@ -71,6 +83,7 @@ class TituloTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        enabled: estado,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Título",
@@ -81,8 +94,10 @@ class TituloTextField extends StatelessWidget {
 }
 
 class UbicacionTextField extends StatelessWidget {
+  final bool estado;
   const UbicacionTextField({
     Key key,
+    this.estado,
   }) : super(key: key);
 
   @override
@@ -92,6 +107,7 @@ class UbicacionTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        enabled: estado,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Ubicación en el mapa",
@@ -103,8 +119,10 @@ class UbicacionTextField extends StatelessWidget {
 }
 
 class DenuncianteTextField extends StatelessWidget {
+  final bool estado;
   const DenuncianteTextField({
     Key key,
+    this.estado,
   }) : super(key: key);
 
   @override
@@ -114,6 +132,7 @@ class DenuncianteTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        enabled: estado,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Denunciante",
@@ -124,8 +143,10 @@ class DenuncianteTextField extends StatelessWidget {
 }
 
 class DescripcionTextField extends StatelessWidget {
+  final bool estado;
   const DescripcionTextField({
     Key key,
+    this.estado,
   }) : super(key: key);
 
   @override
@@ -135,6 +156,7 @@ class DescripcionTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        enabled: estado,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Descripción",
@@ -146,7 +168,14 @@ class DescripcionTextField extends StatelessWidget {
   }
 }
 
-class GuardarButton extends StatelessWidget {
+class Boton extends StatelessWidget {
+  final String texto;
+
+  const Boton({
+    Key key,
+    this.texto,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -156,7 +185,7 @@ class GuardarButton extends StatelessWidget {
       child: RaisedButton(
         child: Padding(
           padding: EdgeInsets.all(20.0),
-          child: Text("Denunciar"),
+          child: Text(texto),
         ),
         onPressed: () {
           Navigator.of(context).pop();
