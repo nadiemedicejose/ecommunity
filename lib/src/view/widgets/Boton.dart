@@ -19,9 +19,7 @@ class Boton extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           child: Text(texto),
         ),
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
+        onPressed: () {},
         shape: StadiumBorder(),
         color: Colors.green,
         textColor: Colors.white,

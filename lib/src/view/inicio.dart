@@ -1,3 +1,4 @@
+import 'package:ECOmmunity/src/view/Reportes/CrearReporte.dart';
 import 'package:ECOmmunity/src/view/detalleReporte.dart';
 import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:ECOmmunity/src/view/Reportes/reporte.dart';
@@ -59,7 +60,7 @@ class _InicioState extends State<Inicio> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => ReportePage(),
+            builder: (context) => CrearReporte(),
           ));
         },
         child: Icon(Icons.add),
@@ -134,8 +135,14 @@ class Comunidades extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
-          AvatarComunidad(
-            color: Colors.red,
+          GestureDetector(
+            child: AvatarComunidad(
+              color: Colors.red,
+            ),
+            onTap: () {
+              final snackBar = SnackBar(content: Text("Abrir comunidad"));
+              Scaffold.of(context).showSnackBar(snackBar);
+            },
           ),
           SizedBox(width: 5),
           AvatarComunidad(

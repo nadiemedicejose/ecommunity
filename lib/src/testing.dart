@@ -6,6 +6,7 @@ import 'package:ECOmmunity/src/view/Reportes/CrearReporte.dart';
 import 'package:ECOmmunity/src/view/Reportes/DetallesReporte.dart';
 import 'package:ECOmmunity/src/view/Reportes/FinalizarReporte.dart';
 import 'package:ECOmmunity/src/view/detalleReporte.dart';
+import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:ECOmmunity/src/view/inicio.dart';
 import 'package:ECOmmunity/src/view/registro.dart';
 import 'package:ECOmmunity/src/view/widgets/WidgetTest.dart';
@@ -25,7 +26,7 @@ class Testing extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Inicio(),
+      home: IniciarSesion(),
     );
   }
 }
