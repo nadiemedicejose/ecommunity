@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ECOmmunity/src/model/funcionesBD.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class Perfil extends StatefulWidget {
@@ -40,23 +41,23 @@ class _PerfilState extends State<Perfil> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Avatar(
-                nombre: "Calabaza",
+                nombre: "$logNombre",
                 avatarUrl: 'https://i.imgur.com/oYzgWwQ.jpg',
               ),
               NombreTextField(
-                nombre: "Calabaza",
+                nombre: "$logNombre",
               ),
               EmailTextField(
-                email: "calabaza@miau.com",
+                email: "$logEmail",
               ),
               TelefonoTextField(
-                telefono: "6428888888",
+                telefono: "$logTelefono",
               ),
               ResidenciaTextField(
-                residencia: "Hermosillo",
+                residencia: "$logResidencia",
               ),
               ContrasenaTextField(
-                contrasena: "M1auuu!",
+                contrasena: "$logContrasena",
               ),
             ],
           ),

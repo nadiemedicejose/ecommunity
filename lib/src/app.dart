@@ -15,7 +15,7 @@ class ECOmmunity extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Registro(),
+      home: IniciarSesion(),
     );
   }
 } 

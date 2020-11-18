@@ -15,6 +15,8 @@ final residenciaController = TextEditingController();
 final contrasenaController = TextEditingController();
 final confContrasenaController = TextEditingController();
 
+
+
 class Registro extends StatefulWidget {
   @override
   _RegistroState createState() => _RegistroState();
@@ -247,13 +249,14 @@ class ConfirmarContrasenaTextField extends StatelessWidget {
 
 class RegistrarmeButton extends StatelessWidget {
   final datosUs = ModeloBD(
-    nombre: contNombre.toString(),
-    telefono: 'telefono',
-    email: 'email',
-    residencia: 'residencia',
-    contrasena: 'contrasena',
-    fechaRegistro: 'fechaRegistro',
-    tipoPerfil: 'tipoPerfil',
+    
+    nombre: nombreController.text,
+    telefono: telefonoController.text,
+    email: emailController.text.toString(),
+    residencia: residenciaController.text,
+    contrasena: contrasenaController.text,
+    fechaRegistro: DateTime.now().toString(),
+    tipoPerfil: 0,
     foto: 'foto',
   );
   @override
@@ -271,14 +274,15 @@ class RegistrarmeButton extends StatelessWidget {
           //insert de nuevo usuario
           await objBD.addItem(datosUs);
           var usuarios = await objBD.listaUsuario();
-          print(usuarios[usuarios.length-1].nombre); //Title 1
-          
+          print("olo"+usuarios[usuarios.length-1].nombre); //Title 1
+          /*
           print(nombreController.text);
           print(emailController.text);
           print(telefonoController.text);
           print(residenciaController.text);
           print(contrasenaController.text);
           print(confContrasenaController.text);
+          */
           Navigator.of(context).push(MaterialPageRoute(
             builder: (contexto) => IniciarSesion(),
           ));

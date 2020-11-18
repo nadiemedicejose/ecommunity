@@ -3,6 +3,7 @@ import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:ECOmmunity/src/view/reporte.dart';
 import 'package:flutter/material.dart';
 import 'perfil.dart';
+import 'package:ECOmmunity/src/model/funcionesBD.dart';
 
 class Inicio extends StatefulWidget {
   @override
@@ -70,8 +71,8 @@ class _InicioState extends State<Inicio> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("Calabaza"),
-              accountEmail: Text("calabaza@miau.com"),
+              accountName: Text("$logNombre"),
+              accountEmail: Text("$logEmail"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Text(

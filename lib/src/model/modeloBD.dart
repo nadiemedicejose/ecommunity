@@ -1,7 +1,6 @@
 
-
-
 class ModeloBD{
+
   final int idUsuario;
   final String nombre;
   final String telefono;
@@ -9,7 +8,7 @@ class ModeloBD{
   final String residencia;
   final String contrasena;
   final String fechaRegistro;
-  final String tipoPerfil;
+  final int tipoPerfil;
   final String foto;
 
   ModeloBD({this.idUsuario,this.nombre,this.telefono, this.email, this.residencia, this. contrasena, this.fechaRegistro, this.tipoPerfil, this.foto});
@@ -27,3 +26,5 @@ class ModeloBD{
     };
   }
 }
+
+
