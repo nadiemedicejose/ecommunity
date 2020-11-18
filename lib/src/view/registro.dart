@@ -1,7 +1,7 @@
-import 'package:ECOmmunity/src/model/ECOmmunityHelper.dart';
+import 'package:ECOmmunity/src/model/DatabaseHelper.dart';
 import 'package:ECOmmunity/src/model/UsuarioInfo.dart';
+import 'package:ECOmmunity/src/model/usuario.dart';
 import 'package:ECOmmunity/src/view/iniciar.dart';
-import 'package:ECOmmunity/src/model/validaciones.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -21,21 +21,24 @@ class Registro extends StatefulWidget {
 DateTime _fechaRegistro;
 
 class _RegistroState extends State<Registro> {
-  ECOmmunityHelper _ecOmmunityHelper = ECOmmunityHelper();
+  DatabaseCreator db = DatabaseCreator();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
   void initState() {
     _fechaRegistro = DateTime.now();
-    _ecOmmunityHelper.initializeDatabase().then((value) {
-      print('--------Base de datos inicializada-----------');
+    db.initDatabase().then((value) {
+      print('-***-Base de datos inicializada-***-');
     });
     super.initState();
   }
 
-  void validate() {
+  void validar() {
     if (formkey.currentState.validate()) {
       print("Validado");
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (contexto) => IniciarSesion(),
+      ));
     } else {
       print("No validado");
     }
@@ -86,10 +89,6 @@ class _RegistroState extends State<Registro> {
                     child: Text("Registrarme"),
                   ),
                   onPressed: () async {
-                    //insert de nuevo usuario
-                    //await objBD.addItem(datosUs);
-                    //var usuarios = await objBD.listaUsuario();
-
                     var usuarioInfo = UsuarioInfo(
                       nombre: nombreController.text,
                       telefono: telefonoController.text,
@@ -100,11 +99,8 @@ class _RegistroState extends State<Registro> {
                       tipoPerfil: 1,
                       foto: "foto",
                     );
-                    _ecOmmunityHelper.insertarUsuario(usuarioInfo);
-
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (contexto) => IniciarSesion(),
-                    ));
+                    Usuario.insertarUsuario(usuarioInfo);
+                    validar();
                   },
                   shape: StadiumBorder(),
                   color: Colors.green,
