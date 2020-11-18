@@ -1,11 +1,9 @@
+import 'package:ECOmmunity/src/model/ECOmmunityHelper.dart';
+import 'package:ECOmmunity/src/model/UsuarioInfo.dart';
 import 'package:ECOmmunity/src/view/iniciar.dart';
+import 'package:ECOmmunity/src/model/validaciones.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'perfil.dart';
-import 'package:ECOmmunity/src/model/funcionesBD.dart';
-import 'package:ECOmmunity/src/model/modeloBD.dart';
-
-FuncionesBD objBD = FuncionesBD();
 
 // Controladores para obtener valor de TextFormFields
 final nombreController = TextEditingController();
@@ -15,34 +13,31 @@ final residenciaController = TextEditingController();
 final contrasenaController = TextEditingController();
 final confContrasenaController = TextEditingController();
 
-
-
 class Registro extends StatefulWidget {
   @override
   _RegistroState createState() => _RegistroState();
-  
 }
-TextEditingController contNombre = new TextEditingController();
+
+DateTime _fechaRegistro;
+
 class _RegistroState extends State<Registro> {
+  ECOmmunityHelper _ecOmmunityHelper = ECOmmunityHelper();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
-  
+  @override
+  void initState() {
+    _fechaRegistro = DateTime.now();
+    _ecOmmunityHelper.initializeDatabase().then((value) {
+      print('--------Base de datos inicializada-----------');
+    });
+    super.initState();
+  }
 
   void validate() {
     if (formkey.currentState.validate()) {
       print("Validado");
     } else {
       print("No validado");
-    }
-  }
-
-  String validarContrasena(value) {
-    if (value.isEmpty) {
-      return "Especifica una contraseña";
-    } else if (value.length < 6) {
-      return "Al menos 6 caracteres";
-    } else {
-      return null;
     }
   }
 
@@ -67,7 +62,7 @@ class _RegistroState extends State<Registro> {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(25.0),
         child: Form(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          autovalidateMode: AutovalidateMode.always,
           key: formkey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +76,41 @@ class _RegistroState extends State<Registro> {
               ResidenciaTextField(),
               ContrasenaTextField(),
               ConfirmarContrasenaTextField(),
-              RegistrarmeButton(),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 20.0,
+                ),
+                child: RaisedButton(
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Text("Registrarme"),
+                  ),
+                  onPressed: () async {
+                    //insert de nuevo usuario
+                    //await objBD.addItem(datosUs);
+                    //var usuarios = await objBD.listaUsuario();
+
+                    var usuarioInfo = UsuarioInfo(
+                      nombre: nombreController.text,
+                      telefono: telefonoController.text,
+                      email: emailController.text,
+                      residencia: residenciaController.text,
+                      contrasena: contrasenaController.text,
+                      fechaRegistro: _fechaRegistro,
+                      tipoPerfil: 1,
+                      foto: "foto",
+                    );
+                    _ecOmmunityHelper.insertarUsuario(usuarioInfo);
+
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (contexto) => IniciarSesion(),
+                    ));
+                  },
+                  shape: StadiumBorder(),
+                  color: Colors.green,
+                  textColor: Colors.white,
+                ),
+              ),
             ],
           ),
         ),
@@ -173,6 +202,7 @@ class TelefonoTextField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: "Teléfono",
         ),
+        validator: validacionTelefono,
       ),
     );
   }
@@ -219,6 +249,8 @@ class ContrasenaTextField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: "Contraseña",
         ),
+        obscureText: true,
+        validator: validarContrasena,
       ),
     );
   }
@@ -242,55 +274,39 @@ class ConfirmarContrasenaTextField extends StatelessWidget {
           border: OutlineInputBorder(),
           labelText: "Confirmar contraseña",
         ),
+        obscureText: true,
+        validator: confirmarContrasena,
       ),
     );
   }
 }
 
-class RegistrarmeButton extends StatelessWidget {
-  final datosUs = ModeloBD(
-    
-    nombre: nombreController.text,
-    telefono: telefonoController.text,
-    email: emailController.text.toString(),
-    residencia: residenciaController.text,
-    contrasena: contrasenaController.text,
-    fechaRegistro: DateTime.now().toString(),
-    tipoPerfil: 0,
-    foto: 'foto',
-  );
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 20.0,
-      ),
-      child: RaisedButton(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Text("Registrarme"),
-        ),
-        onPressed: () async {
-          //insert de nuevo usuario
-          await objBD.addItem(datosUs);
-          var usuarios = await objBD.listaUsuario();
-          print("olo"+usuarios[usuarios.length-1].nombre); //Title 1
-          /*
-          print(nombreController.text);
-          print(emailController.text);
-          print(telefonoController.text);
-          print(residenciaController.text);
-          print(contrasenaController.text);
-          print(confContrasenaController.text);
-          */
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => IniciarSesion(),
-          ));
-        },
-        shape: StadiumBorder(),
-        color: Colors.green,
-        textColor: Colors.white,
-      ),
-    );
+String validarContrasena(value) {
+  if (value.isEmpty) {
+    return "Especifica una contraseña";
+  } else if (value.length < 6) {
+    return "Al menos 6 caracteres";
+  } else {
+    return null;
+  }
+}
+
+String confirmarContrasena(value) {
+  if (value != contrasenaController.text) {
+    return "Contraseña no coincide";
+  } else {
+    return null;
+  }
+}
+
+String validacionTelefono(value) {
+  if (value.isEmpty) {
+    return "Requerido";
+  } else if (value.length < 10) {
+    return "Longitud incorrecta";
+  } else if (value.length > 10) {
+    return "Longitud incorrecta";
+  } else {
+    return null;
   }
 }

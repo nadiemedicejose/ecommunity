@@ -26,7 +26,7 @@ class Testing extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: IniciarSesion(),
+      home: Registro(),
     );
   }
 }
