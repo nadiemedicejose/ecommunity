@@ -5,4 +5,3 @@ class Usuario {
   String get username => _username;
   String get email => _email;
 }
- 

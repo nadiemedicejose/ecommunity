@@ -1,13 +1,19 @@
+import 'package:ECOmmunity/src/view/registro.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'inicio.dart';
 import 'perfil.dart';
+import 'package:ECOmmunity/src/model/funcionesBD.dart';
+import 'registro.dart';
+
+FuncionesBD objBD = FuncionesBD();
+final emailController = TextEditingController();
+final contrasenaController = TextEditingController();
 
 class IniciarSesion extends StatefulWidget {
   @override
   _IniciarSesionState createState() => _IniciarSesionState();
 }
-
 
 class _IniciarSesionState extends State<IniciarSesion> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
@@ -90,6 +96,7 @@ class EmailTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: emailController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Email",
@@ -111,6 +118,7 @@ class ContrasenaTextField extends StatelessWidget {
         top: 20.0,
       ),
       child: TextFormField(
+        controller: contrasenaController,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: "Contraseña",
@@ -133,10 +141,29 @@ class IniciarSesionButton extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           child: Text("Iniciar Sesión"),
         ),
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => Inicio(),
-          ));
+        onPressed: () async {
+          
+
+          var estado = await objBD.getLoginUsuario(emailController.text, contrasenaController.text);
+          //print(emailController.text+"123");
+
+          if (estado.length > 0) {
+            print(estado);
+
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (contexto) => Inicio(),
+            ));
+          } else {
+            print(estado.toString()+"<-Estado Login");
+            print("error weon");
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Text("Datos no encontrados!"),
+                  );
+                });
+          }
         },
         shape: StadiumBorder(),
         color: Colors.green,
@@ -160,7 +187,7 @@ class RegistrarmeButton extends StatelessWidget {
         ),
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (contexto) => IniciarSesion(),
+            builder: (contexto) => Registro(),
           ));
         },
       ),
