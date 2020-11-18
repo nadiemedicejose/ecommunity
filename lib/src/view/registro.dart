@@ -2,6 +2,10 @@ import 'package:ECOmmunity/src/view/iniciar.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'perfil.dart';
+import 'package:ECOmmunity/src/model/funcionesBD.dart';
+import 'package:ECOmmunity/src/model/modeloBD.dart';
+
+FuncionesBD objBD = FuncionesBD();
 
 // Controladores para obtener valor de TextFormFields
 final nombreController = TextEditingController();
@@ -14,10 +18,13 @@ final confContrasenaController = TextEditingController();
 class Registro extends StatefulWidget {
   @override
   _RegistroState createState() => _RegistroState();
+  
 }
-
+TextEditingController contNombre = new TextEditingController();
 class _RegistroState extends State<Registro> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+
+  
 
   void validate() {
     if (formkey.currentState.validate()) {
@@ -239,6 +246,16 @@ class ConfirmarContrasenaTextField extends StatelessWidget {
 }
 
 class RegistrarmeButton extends StatelessWidget {
+  final datosUs = ModeloBD(
+    nombre: contNombre.toString(),
+    telefono: 'telefono',
+    email: 'email',
+    residencia: 'residencia',
+    contrasena: 'contrasena',
+    fechaRegistro: 'fechaRegistro',
+    tipoPerfil: 'tipoPerfil',
+    foto: 'foto',
+  );
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -250,7 +267,12 @@ class RegistrarmeButton extends StatelessWidget {
           padding: EdgeInsets.all(20.0),
           child: Text("Registrarme"),
         ),
-        onPressed: () {
+        onPressed: () async {
+          //insert de nuevo usuario
+          await objBD.addItem(datosUs);
+          var usuarios = await objBD.listaUsuario();
+          print(usuarios[usuarios.length-1].nombre); //Title 1
+          
           print(nombreController.text);
           print(emailController.text);
           print(telefonoController.text);

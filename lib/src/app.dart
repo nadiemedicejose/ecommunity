@@ -1,3 +1,5 @@
+import 'package:ECOmmunity/src/view/detalleReporte.dart';
+import 'package:ECOmmunity/src/view/registro.dart';
 import 'package:flutter/material.dart';
 import 'view/iniciar.dart';
 
@@ -13,7 +15,7 @@ class ECOmmunity extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: IniciarSesion(),
+      home: Registro(),
     );
   }
 } 
