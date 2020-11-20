@@ -20,11 +20,11 @@ class _AceptarReporteState extends State<AceptarReporte> {
           },
         ),
         title: Text("Detalles de reporte"),
-        actions: <Widget>[
+        actions: [
           IconButton(
             icon: Icon(Icons.more_vert),
             tooltip: 'Opciones',
-            onPressed: () {},
+            onPressed: () => print("Opciones"),
           ),
         ],
       ),

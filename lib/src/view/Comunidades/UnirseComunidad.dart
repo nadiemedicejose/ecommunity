@@ -12,16 +12,17 @@ class UnirseComunidad extends StatefulWidget {
 
 class _UnirseComunidadState extends State<UnirseComunidad> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  Boton botonAccion = new Boton();
+
+  fHola() {
+    print("Te uniste a esta comunidad");
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: BackButton(),
         title: Text("Comunidad"),
         actions: <Widget>[
           IconButton(
@@ -53,9 +54,7 @@ class _UnirseComunidadState extends State<UnirseComunidad> {
                 lineas: 8,
                 estado: false,
               ),
-              Boton(
-                texto: "Unirme",
-              ),
+              botonAccion.botonAccion("Unirme", accion: () => {fHola()}),
             ],
           ),
         ),

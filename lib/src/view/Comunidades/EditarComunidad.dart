@@ -12,6 +12,11 @@ class EditarComunidad extends StatefulWidget {
 
 class _EditarComunidadState extends State<EditarComunidad> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  Boton botonAccion = new Boton();
+
+  fHola() {
+    print("Comunidad editada exitosamente");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +58,7 @@ class _EditarComunidadState extends State<EditarComunidad> {
                 lineas: 8,
                 estado: true,
               ),
-              Boton(
-                texto: "Guardar",
-              ),
+              botonAccion.botonAccion("Guardar", accion: () => {fHola()}),
             ],
           ),
         ),

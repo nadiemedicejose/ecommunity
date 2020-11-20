@@ -4,11 +4,13 @@ class InputTextFieldIcon extends StatelessWidget {
   final String label;
   final Icon icon;
   final bool estado;
+  final TextEditingController controlador;
   const InputTextFieldIcon({
     Key key,
     this.label,
     this.icon,
     this.estado,
+    this.controlador,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class InputTextFieldIcon extends StatelessWidget {
       ),
       child: TextFormField(
         enabled: estado,
+        controller: controlador,
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: label,

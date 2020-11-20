@@ -1,5 +1,7 @@
+import 'dart:math';
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'ReporteTarjeta.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WidgetTest extends StatefulWidget {
   @override
@@ -7,6 +9,7 @@ class WidgetTest extends StatefulWidget {
 }
 
 class _WidgetTestState extends State<WidgetTest> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,14 +27,8 @@ class _WidgetTestState extends State<WidgetTest> {
             onPressed: () {},
           ),
         ],
-      ),
-      body: ReporteTarjeta(
-        titulo: "Kinder Nueva Creación",
-        descripcion:
-            "Padres de familia del preescolar Nueva Creación, ubicado en la colonia Quintas del Sol, hacen un esfuerzo para limpiar el ...",
-        foto: 'https://www.lajornadanet.com/diario/archivo/2013/enero/8/11.jpg',
-        color: Color.fromRGBO(185, 164, 92, 1),
-      ),
+      )
     );
   }
 }
+
