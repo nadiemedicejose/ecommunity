@@ -46,9 +46,7 @@ class _ReportePageState extends State<ReportePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TituloTextField(
-                estado: true,
-              ),
+              TituloTextField(estado: true),
               UbicacionTextField(
                 estado: true,
               ),

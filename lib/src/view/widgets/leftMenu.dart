@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:ECOmmunity/src/model/funcionesBD.dart';
 import '../iniciar.dart';
 import '../perfil.dart';
 
@@ -23,10 +23,6 @@ class LeftMenu extends StatelessWidget {
             accountEmail: Text("$logEmail"),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Colors.white,
-              child: Text(
-                "C",
-                style: TextStyle(fontSize: 40.0),
-              ),
             ),
           ),
           ListTile(

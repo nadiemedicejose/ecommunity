@@ -16,7 +16,7 @@ class _CrearComunidadState extends State<CrearComunidad> {
 
   fHola() {
     // Perfecta para hacer validaciones
-    print("Comunidad creada");
+    print("Comunidad Ok");
     Navigator.of(context).pop();
   }
 
@@ -24,19 +24,8 @@ class _CrearComunidadState extends State<CrearComunidad> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        leading: BackButton(),
         title: Text("Crear Comunidad"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert),
-            tooltip: 'Opciones',
-            onPressed: () {},
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(25.0),

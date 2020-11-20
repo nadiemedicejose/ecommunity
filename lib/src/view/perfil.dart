@@ -1,6 +1,10 @@
+import 'widgets/InputTextField.dart';
 import 'package:flutter/material.dart';
 import 'package:ECOmmunity/src/model/funcionesBD.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+
+import 'widgets/avatarUsuario.dart';
+import 'widgets/masOpciones.dart';
 
 class Perfil extends StatefulWidget {
   @override
@@ -26,220 +30,50 @@ class _PerfilState extends State<Perfil> {
       appBar: AppBar(
         leading: BackButton(),
         title: Text("Perfil"),
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: 16.0),
-            child: Icon(Icons.more_vert),
-          ),
+        actions: [
+          MasOpciones(),
         ],
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(25.0),
-        child: Form(
-          key: formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Avatar(
-                nombre: "$logNombre",
-                avatarUrl: 'https://i.imgur.com/oYzgWwQ.jpg',
-              ),
-              NombreTextField(
-                nombre: "$logNombre",
-              ),
-              EmailTextField(
-                email: "$logEmail",
-              ),
-              TelefonoTextField(
-                telefono: "$logTelefono",
-              ),
-              ResidenciaTextField(
-                residencia: "$logResidencia",
-              ),
-              ContrasenaTextField(
-                contrasena: "$logContrasena",
-              ),
-            ],
-          ),
-        )
-      ),
-    );
-  }
-}
-
-class Avatar extends StatelessWidget {
-  final String avatarUrl;
-  final String nombre;
-
-  const Avatar({
-    Key key,
-    this.avatarUrl,
-    this.nombre,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 10.0,
-      ),
-      child: Column(
-        children: <Widget>[
-          ClipRRect(
-            borderRadius: BorderRadius.circular(100.0),
-            child: Image.network(
-              avatarUrl,
-              height: 200.0,
-              width: 200.0,
+          padding: EdgeInsets.all(25.0),
+          child: Form(
+            key: formkey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Avatar(
+                  nombre: "Chris Evans",
+                  avatarUrl:
+                      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Chris_Evans_in_2019.jpg/1200px-Chris_Evans_in_2019.jpg',
+                ),
+                InputTextField(
+                  label: "Nombre",
+                  value: "$logNombre",
+                  estado: false,
+                ),
+                InputTextField(
+                  label: "Email",
+                  value: "$logEmail",
+                  estado: false,
+                ),
+                InputTextField(
+                  label: "Teléfono",
+                  value: "$logTelefono",
+                  estado: false,
+                ),
+                InputTextField(
+                  label: "Residencia",
+                  value: "$logResidencia",
+                  estado: false,
+                ),
+                InputTextField(
+                  label: "Contraseña",
+                  value: "$logContrasena",
+                  estado: false,
+                ),
+              ],
             ),
-          ),
-          SizedBox(
-            height: 10.0,
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              bottom: 20.0,
-            ),
-            child: Text(
-              nombre,
-              style: TextStyle(
-                fontFamily: 'DM Sans', // No reconocida
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class NombreTextField extends StatelessWidget {
-  final String nombre;
-
-  const NombreTextField({
-    Key key,
-    this.nombre,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.only(
-          top: 20.0,
-        ),
-        child: TextFormField(
-          initialValue: nombre,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: "Nombre",
-          ),
-        ));
-  }
-}
-
-class EmailTextField extends StatelessWidget {
-  final String email;
-
-  const EmailTextField({
-    Key key,
-    this.email,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 20.0,
-      ),
-      child: TextFormField(
-        initialValue: email,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: "Email",
-        ),
-        validator: MultiValidator([
-          RequiredValidator(errorText: "Requerido"),
-          EmailValidator(errorText: "Correo no válido")
-        ]),
-      ),
-    );
-  }
-}
-
-class TelefonoTextField extends StatelessWidget {
-  final String telefono;
-
-  const TelefonoTextField({
-    Key key,
-    this.telefono,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 20.0,
-      ),
-      child: TextFormField(
-        initialValue: telefono,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: "Teléfono",
-        ),
-      ),
-    );
-  }
-}
-
-class ResidenciaTextField extends StatelessWidget {
-  final String residencia;
-
-  const ResidenciaTextField({
-    Key key,
-    this.residencia,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 20.0,
-      ),
-      child: TextFormField(
-        initialValue: residencia,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: "Residencia",
-        ),
-      ),
-    );
-  }
-}
-
-class ContrasenaTextField extends StatelessWidget {
-  final String contrasena;
-
-  const ContrasenaTextField({
-    Key key,
-    this.contrasena,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: 20.0,
-      ),
-      child: TextFormField(
-        initialValue: contrasena,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: "Contraseña",
-        ),
-      ),
+          )),
     );
   }
 }

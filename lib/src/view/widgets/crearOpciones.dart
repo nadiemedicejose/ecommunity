@@ -1,8 +1,7 @@
 import 'package:ECOmmunity/src/view/Comunidades/CrearComunidad.dart';
+import 'package:ECOmmunity/src/view/Reportes/CrearReporte.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-
-import '../reporte.dart';
 
 class Nuevo extends StatelessWidget {
   const Nuevo({
@@ -22,7 +21,7 @@ class Nuevo extends StatelessWidget {
           backgroundColor: Color.fromRGBO(185, 164, 92, 1),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ReportePage(),
+              builder: (context) => CrearReporte(),
             ));
           }
         ),
