@@ -5,6 +5,7 @@ import 'package:ECOmmunity/src/view/Reportes/AceptarReporte.dart';
 import 'package:ECOmmunity/src/view/Reportes/CrearReporte.dart';
 import 'package:ECOmmunity/src/view/Reportes/DetallesReporte.dart';
 import 'package:ECOmmunity/src/view/Reportes/FinalizarReporte.dart';
+import 'package:ECOmmunity/src/view/Reportes/reporte.dart';
 import 'package:ECOmmunity/src/view/detalleReporte.dart';
 import 'package:ECOmmunity/src/view/inicio.dart';
 import 'package:ECOmmunity/src/view/registro.dart';

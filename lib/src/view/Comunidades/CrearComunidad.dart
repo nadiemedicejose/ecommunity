@@ -1,7 +1,7 @@
+import 'package:ECOmmunity/src/view/widgets/InputDatePicker.dart';
 import 'package:flutter/material.dart';
 import '../widgets/Boton.dart';
 import '../widgets/InputTextField.dart';
-import '../widgets/InputTextFieldIcon.dart';
 import '../widgets/InputTextFieldMultiline.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
@@ -12,6 +12,13 @@ class CrearComunidad extends StatefulWidget {
 
 class _CrearComunidadState extends State<CrearComunidad> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
+  Boton botonAccion = new Boton();
+
+  fHola() {
+    // Perfecta para hacer validaciones
+    print("Comunidad creada");
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +50,13 @@ class _CrearComunidadState extends State<CrearComunidad> {
                 label: "Nombre",
                 estado: true,
               ),
-              InputTextFieldIcon(
-                label: "Fecha de antigüedad",
-                icon: Icon(Icons.calendar_today),
-                estado: true,
-              ),
+              InputDatePicker(),
               InputTextFieldMultiline(
                 label: "Descripción",
                 lineas: 8,
                 estado: true,
               ),
-              Boton(
-                texto: "Crear",
-              ),
+              botonAccion.botonAccion("Crear", accion: () => {fHola()}),
             ],
           ),
         ),

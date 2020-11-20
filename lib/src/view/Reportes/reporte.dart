@@ -47,19 +47,19 @@ class _ReportePageState extends State<ReportePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TituloTextField(
-                estado: false,
+                estado: true,
               ),
               UbicacionTextField(
-                estado: false,
+                estado: true,
               ),
               DenuncianteTextField(
-                estado: false,
+                estado: true,
               ),
               DescripcionTextField(
-                estado: false,
+                estado: true,
               ),
               Boton(
-                texto: "Guardar campos",
+                texto: "Denunciar",
               ),
             ],
           ),
